@@ -1,0 +1,42 @@
+<div class="room-management">
+  <h5 class="title">Quản lý loại phòng</h5>
+  <div class="roomtype-container">
+    <div class="room-list">
+      <div class="room-controls">
+        <input type="text" placeholder="Tìm kiếm phòng..." />
+        <select>
+          <option>Tất cả</option>
+          <option>Tầng 1</option>
+          <option>Tầng 2</option>
+          <option>Tầng 3</option>
+        </select>
+        <button class="add-room">+ Thêm Phòng</button>
+      </div>
+
+      <div class="room-type-items">
+        <div
+          class="room-type-item"
+          *ngFor="let rt of roomTypes"
+          (click)="onSelectRoomType(rt)"
+        >
+          <h5>{{ rt.TenLP }}</h5>
+          <p>Số giường: {{ rt.SoGiuong }}</p>
+          <p>Giá: {{ rt.GiaPhong | currency : "VND" }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-type-detail" *ngIf="selectedRoomType">
+      <h5>Chi tiết loại phòng: {{ selectedRoomType.TenLP }}</h5>
+      <p><strong>Số giường:</strong> {{ selectedRoomType.SoGiuong }}</p>
+      <p>
+        <strong>Giá:</strong> {{ selectedRoomType.GiaPhong | currency : "VND" }}
+      </p>
+      <p><strong>Mô tả:</strong> {{ selectedRoomType.MoTa }}</p>
+      <div class="actions">
+        <button class="edit">Sửa</button>
+        <button class="delete">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>

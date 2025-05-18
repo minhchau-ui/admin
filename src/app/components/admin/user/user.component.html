@@ -1,0 +1,62 @@
+<div class="user-management-card">
+  <h2>Users List</h2>
+
+  <!-- Form sửa user hiện khi có user được chọn -->
+  <div *ngIf="editingUser" class="edit-form">
+    <h4>Chỉnh sửa user: {{ editingUser.TenKH }}</h4>
+    <form (ngSubmit)="saveUser()">
+      <label>
+        Name:
+        <input name="name" required />
+        <!-- <input [(ngModel)]="editingUser.TenKH" name="name" required /> -->
+      </label>
+      <label>
+        Email:
+        <input name="email" type="email" required />
+        <!-- <input [(ngModel)]="editingUser.Email" name="email" type="email" required /> -->
+      </label>
+      <label>
+        Phone:
+        <input name="phone" required />
+        <!-- <input [(ngModel)]="editingUser.SoDT" name="phone" required /> -->
+      </label>
+      <label>
+        Address:
+        <input name="address" />
+        <!-- <input [(ngModel)]="editingUser.DiaChi" name="address" /> -->
+      </label>
+      <label>
+        Request:
+        <input name="request" />
+        <!-- <input [(ngModel)]="editingUser.YeuCau_DB" name="request" /> -->
+      </label>
+
+      <div class="buttons">
+        <button type="submit">Lưu</button>
+        <button type="button" (click)="cancelEdit()">Huỷ</button>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- Bảng user -->
+  <div class="table-header">
+    <div>NAME</div>
+    <div>EMAIL</div>
+    <div>PHONE</div>
+    <div>ADDRESS</div>
+    <div>REQUEST</div>
+    <div>HÀNH ĐỘNG</div>
+  </div>
+
+  <div *ngFor="let user of users" class="table-row">
+    <div>{{ user.TenKH }}</div>
+    <div>{{ user.Email }}</div>
+    <div>{{ user.SoDT }}</div>
+    <div>{{ user.DiaChi }}</div>
+    <div>{{ user.YeuCau_DB || '—' }}</div>
+    <div class="actions">
+      <button (click)="editUser(user)">Sửa</button>
+    </div>
+  </div>
+</div>

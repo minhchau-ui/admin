@@ -1,0 +1,144 @@
+.room-management {
+  padding: 24px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .roomtype-container {
+    display: flex;
+    gap: 2rem;
+    background: #f5f7fd;
+    border-radius: 1rem;
+    // padding: 1rem;
+
+    .room-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      .room-controls {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        input[type="text"],
+        select {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          border: 1px solid #dce1e7;
+          border-radius: 0.5rem;
+          flex-grow: 1;
+        }
+
+        select {
+          max-width: 150px;
+        }
+
+        .add-room {
+          background-color: #2f80ed;
+          color: #fff;
+          border: none;
+          border-radius: 0.5rem;
+          padding: 0.5rem 1.2rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #256ad2;
+          }
+        }
+      }
+
+      .room-type-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem; // Giảm khoảng cách giữa các box
+
+        .room-type-item {
+          background: white;
+          padding: 0.5rem 0.75rem; // Giảm padding trong box
+          border-radius: 0.75rem;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+          cursor: pointer;
+          transition: box-shadow 0.3s ease;
+
+          &:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+          }
+
+          h4 {
+            margin-bottom: 0.3rem; // Giảm khoảng cách dưới tiêu đề
+            font-size: 1rem;
+            color: #1f2d3d;
+            font-weight: 600;
+          }
+
+          p {
+            margin: 0.15rem 0; // Giảm khoảng cách giữa các dòng
+            color: #566573;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .room-type-detail {
+      width: 400px;
+      height: 240px;
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+      h3 {
+        @extend .title;
+      }
+
+      p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        color: #34495e;
+
+        strong {
+          color: #2c3e50;
+        }
+      }
+
+      .actions {
+        margin-top: 1.5rem;
+
+        button {
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          border: none;
+          font-weight: 600;
+          cursor: pointer;
+          margin-right: 1rem;
+          transition: background-color 0.3s ease;
+
+          &.edit {
+            background-color: #27ae60;
+            color: white;
+
+            &:hover {
+              background-color: #1e874b;
+            }
+          }
+
+          &.delete {
+            background-color: #e74c3c;
+            color: white;
+
+            &:hover {
+              background-color: #c0392b;
+            }
+          }
+        }
+      }
+    }
+  }
+}

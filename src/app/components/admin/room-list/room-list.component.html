@@ -1,0 +1,67 @@
+<div class="room-management">
+  <h5 class="title">Quản lý phòng</h5>
+
+  <div class="room-container">
+    <!-- Cột trái: Danh sách phòng -->
+    <div class="room-list">
+      <div class="room-controls">
+        <input type="text" placeholder="Tìm kiếm phòng..." />
+        <select>
+          <option>Tất cả</option>
+          <option>Tầng 1</option>
+          <option>Tầng 2</option>
+          <option>Tầng 3</option>
+          <option>Tầng 4</option>
+        </select>
+        <button class="add-room">+ Thêm Phòng</button>
+      </div>
+
+      <div class="rooms">
+        <div
+          class="room-item"
+          *ngFor="let room of rooms"
+          (click)="onSelectRoom(room)"
+        >
+          <div class="info">
+            <h5>{{ room.TenPhong }} - {{ room.MaLP.TenLP }}</h5>
+            <p>Tầng {{ room.Tang }} • {{ room.MaLP.SoGiuong }} giường</p>
+            <strong>{{ room.MaLP.GiaPhong | currency: 'VND' }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cột phải: Chi tiết -->
+    <div class="room-detail" *ngIf="selectedRoom || rooms.length > 0">
+      <ng-container *ngIf="selectedRoom || rooms.length > 0">
+        <div class="header">
+          <h5>{{ (selectedRoom || rooms[0]).TenPhong }}</h5>
+          <span class="status">
+            {{ (selectedRoom || rooms[0]).TrangThai }}
+          </span>
+        </div>
+        <div class="detail">
+          <p><strong>Tầng:</strong> {{ (selectedRoom || rooms[0]).Tang }}</p>
+          <p><strong>Loại:</strong> {{ (selectedRoom || rooms[0]).MaLP.TenLP }}</p>
+          <p><strong>Giường:</strong> {{ (selectedRoom || rooms[0]).MaLP.SoGiuong }}</p>
+          <p><strong>Giá:</strong> {{ (selectedRoom || rooms[0]).MaLP.GiaPhong | currency: 'VND' }}</p>
+          <p><strong>Mô tả:</strong> {{ (selectedRoom || rooms[0]).MaLP.MoTa }}</p>
+          <div>
+            <strong>Tiện nghi:</strong>
+            <ul>
+              <li
+                *ngFor="let tn of (selectedRoom || rooms[0]).MaLP.TienNghi"
+              >
+                {{ tn.TenTN }} - {{ tn.MoTa }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+      <div class="actions">
+        <button class="edit">Sửa</button>
+        <button class="delete">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>
